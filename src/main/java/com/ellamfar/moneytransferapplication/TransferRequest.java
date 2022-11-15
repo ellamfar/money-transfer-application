@@ -1,7 +1,5 @@
 package com.ellamfar.moneytransferapplication;
 
-import java.util.Objects;
-
 class TransferRequest {
 
   private Long accountFromID;
@@ -40,36 +38,5 @@ class TransferRequest {
   public void setAmount(double amount) {
     this.amount = amount;
   }
-
-//   public void transfer() {
-//         this.accountFrom.setBalance(this.accountFrom.getBalance() - this.amount);
-//         this.accountTo.setBalance(this.accountTo.getBalance() + this.amount);
-//     }
-
-//   @Override
-//   public String toString() {
-//       return "TransferRequest{" +
-//               "accountFromID=" + this.accountFromID +
-//               ", accountToID=" + this.accountToID +
-//               ", amount=" + this.amount +
-//               '}';
-//   }
-
-//   @Override
-//   public boolean equals(Object o) {
-
-//     if (this == o)
-//       return true;
-//     if (!(o instanceof TransferRequest))
-//       return false;
-//     TransferRequest transferRequest = (TransferRequest) o;
-//     return Objects.equals(this.accountFromID, transferRequest.accountFromID) && Objects.equals(this.accountToID, transferRequest.accountToID)
-//         && Objects.equals(this.amount, transferRequest.amount);
-//   }
-
-//   @Override
-//   public int hashCode() {
-//       return Objects.hash(this.accountFromID, this.accountToID, this.amount);
-//   }
 
 }
