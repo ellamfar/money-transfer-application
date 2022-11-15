@@ -63,7 +63,9 @@ class AccountController {
   public List<Account> performTransfer(@RequestBody TransferRequest transferRequest) {
     Account accountFrom = repository.findById(transferRequest.getAccountFromID()).get();
     Account accountTo = repository.findById(transferRequest.getAccountToID()).get();
-    accountFrom.withdraw(transferRequest.getAmount());
+    if(!accountFrom.withdraw(transferRequest.getAmount())){
+      throw new InsufficientFundsException();
+    }
     accountTo.deposit(transferRequest.getAmount());
     List<Account> updatedAccountList = new ArrayList<Account>();
     updatedAccountList.add(accountFrom);
