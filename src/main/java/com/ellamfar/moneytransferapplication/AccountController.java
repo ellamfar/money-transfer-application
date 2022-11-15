@@ -1,6 +1,7 @@
 package com.ellamfar.moneytransferapplication;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,8 +59,21 @@ class AccountController {
       });
   }
 
+  @PutMapping("/transfer")
+  public List<Account> performTransfer(@RequestBody TransferRequest transferRequest) {
+    Account accountFrom = repository.findById(transferRequest.getAccountFromID()).get();
+    Account accountTo = repository.findById(transferRequest.getAccountToID()).get();
+    accountFrom.withdraw(transferRequest.getAmount());
+    accountTo.deposit(transferRequest.getAmount());
+    List<Account> updatedAccountList = new ArrayList<Account>();
+    updatedAccountList.add(accountFrom);
+    updatedAccountList.add(accountTo);
+    return repository.saveAll(updatedAccountList);
+  }
+
   @DeleteMapping("/accounts/{id}")
   void deleteAccount(@PathVariable Long id) {
     repository.deleteById(id);
   }
+
 }

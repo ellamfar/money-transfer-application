@@ -55,6 +55,18 @@ class Account {
     this.balance = balance;
   }
 
+  public boolean withdraw(double amount) {
+    if (amount <= this.balance) {
+      this.balance -= amount;
+      return true;
+    }
+    return false;
+  }
+
+  public void deposit(double amount) {
+    this.balance += amount;
+  }
+
   @Override
   public String toString() {
       return "Account{" +
