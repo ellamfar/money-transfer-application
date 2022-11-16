@@ -79,3 +79,11 @@ Another problem I encountered was that the Java app build would fail during test
 ```
 
 This creates a database on the localhost specifically for the Maven Tests.
+
+## Future Amendments
+
+1. Better security. At the moment, Docker is being run with root priviledges. An important improvement to the Dockerfile would be to run the application as a non-root user. Also, the program may be exposed to SQL injection attacks. An improvement would be to only allow certain priviledges to the user associated with the database.
+
+2. The LoadDatabase class preloads those two accounts everytime the program is launched. I would amend it to only run once.
+
+3. Create a web page for the program.
