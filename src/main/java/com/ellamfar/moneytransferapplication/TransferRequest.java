@@ -1,11 +1,14 @@
 package com.ellamfar.moneytransferapplication;
 
+// Create Transfer Request Class
 class TransferRequest {
 
+  // Initialize variables: ID of Account Sending, ID of Account Receiving, Amount Transferred
   private Long accountFromID;
   private Long accountToID;
   private double amount;
 
+  // Constructors
   TransferRequest() {}
 
   TransferRequest(Long accountFromID, Long accountToID, double amount) {
@@ -15,6 +18,7 @@ class TransferRequest {
     this.amount = amount;
   }
 
+  // Getters
   public Long getAccountFromID() {
     return this.accountFromID;
   }
@@ -27,6 +31,7 @@ class TransferRequest {
     return amount;
   }
 
+  // Setters
   public void setAccountFromID(Long accountFromID) {
     this.accountFromID = accountFromID;
   }

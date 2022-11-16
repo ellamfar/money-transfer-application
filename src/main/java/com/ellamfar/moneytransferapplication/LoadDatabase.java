@@ -14,6 +14,7 @@ class LoadDatabase {
   @Bean
   CommandLineRunner initDatabase(AccountRepository repository) {
 
+    // Preload two accounts
     return args -> {
       log.info("Preloading " + repository.save(new Account("Bilbo", "Baggins", 40000)));
       log.info("Preloading " + repository.save(new Account("Frodo", "Baggins", 2000)));

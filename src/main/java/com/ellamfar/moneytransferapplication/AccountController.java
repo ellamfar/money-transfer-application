@@ -21,21 +21,19 @@ class AccountController {
   }
 
 
-  // Aggregate root
-  // tag::get-aggregate-root[]
+  // Retrieve all accounts in database
   @GetMapping("/accounts")
   List<Account> all() {
     return repository.findAll();
   }
-  // end::get-aggregate-root[]
 
+  // Create a new account and save it to database
   @PostMapping("/accounts")
   Account newAccount(@RequestBody Account newAccount) {
     return repository.save(newAccount);
   }
 
-  // Single item
-  
+  // Retrieve a single account
   @GetMapping("/accounts/{id}")
   Account one(@PathVariable Long id) {
     
@@ -43,6 +41,7 @@ class AccountController {
       .orElseThrow(() -> new AccountNotFoundException(id));
   }
 
+  // Update account with new data
   @PutMapping("/accounts/{id}")
   Account replaceAccount(@RequestBody Account newAccount, @PathVariable Long id) {
     
@@ -59,6 +58,7 @@ class AccountController {
       });
   }
 
+  // Perform money transfer
   @PutMapping("/transfer")
   public List<Account> performTransfer(@RequestBody TransferRequest transferRequest) {
     Account accountFrom = repository.findById(transferRequest.getAccountFromID()).get();
@@ -73,6 +73,7 @@ class AccountController {
     return repository.saveAll(updatedAccountList);
   }
 
+  // Delete account
   @DeleteMapping("/accounts/{id}")
   void deleteAccount(@PathVariable Long id) {
     repository.deleteById(id);

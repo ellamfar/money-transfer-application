@@ -6,14 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+// Create Account Class
 @Entity
 class Account {
 
+  // Generate ID automatically
+  // Initialise variables: ID, First Name, Last Name, Account Balance
   private @Id @GeneratedValue Long id;
   private String firstName;
   private String lastName;
   private double balance;
 
+  // Constructors
   Account() {}
 
   Account(String firstName, String lastName, double balance) {
@@ -23,6 +27,7 @@ class Account {
     this.balance = balance;
   }
 
+  // Getters
   public Long getId() {
     return this.id;
   }
@@ -39,6 +44,7 @@ class Account {
     return balance;
   }
 
+  // Setters
   public void setId(Long id) {
     this.id = id;
   }
@@ -55,6 +61,7 @@ class Account {
     this.balance = balance;
   }
 
+  // Function to withdraw funds if there is a sufficient amount
   public boolean withdraw(double amount) {
     if (amount <= this.balance) {
       this.balance -= amount;
@@ -63,6 +70,7 @@ class Account {
     return false;
   }
 
+  // Function to deposit funds in account
   public void deposit(double amount) {
     this.balance += amount;
   }
