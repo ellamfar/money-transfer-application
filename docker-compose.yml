@@ -1,0 +1,23 @@
+version: "3"
+services:
+  api_service:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql_db
+    networks:
+      - springmysql-net
+ 
+  mysql_db:
+    image: "mysql:8.0"
+    networks:
+      - springmysql-net
+    environment:
+      MYSQL_DATABASE: ellamfar_app_db  
+      MYSQL_USER: ellamfar
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+
+networks:
+  springmysql-net:
