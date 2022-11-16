@@ -32,7 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-configuration.sh
 docker-compose.yml
 Dockerfile
-
